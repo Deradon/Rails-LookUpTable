@@ -1,13 +1,5 @@
-#  look_up_table :page_title, :batch_size => 10000 do |lut, page|
-#    lut[page.page_title] = page.page_id
-#  end
-
-#  # Page.page_title_lut("Berlin") => 14954
-#  look_up_table :page_title
-
-#  # Page.lut(:page_title, "Berlin")
-
-
+# TODO
+# * add: lut_reset(:name)
 module LookUpTable
   extend ActiveSupport::Concern
 
@@ -34,6 +26,7 @@ module LookUpTable
     end
 
     # Write a LookUpTable into Cache
+    # TODO refactor
     def lut_write_to_cache(batch_size, lut_name, sql_mode)
       if sql_mode
         if block_given?
@@ -125,38 +118,6 @@ module LookUpTable
       return @@look_up_tables[lut_name.to_sym]
     end
 
-
-
-#    # Write Keys of cached Items to cache
-#    # TODO *key_batch_size
-#    def lut_write_cache_keys(lut_name, keys)
-#      key_batch_size = 10000
-#      keys.uniq!
-#      i = 0
-#      while key_block = keys.slice!(0,key_batch_size)
-#        lut_write_cache_key_block(lut_name, i, key_block)
-#        i += 1
-#      end
-#    end
-
-#    # Write a single KeyBlock into LookUpTable-Key-Cache
-#    def lut_write_cache_key_block(lut_name, key_item, key_data)
-#      status = Rails.cache.write("#{lut_name}/k/#{key_item}", key_data)
-#      Raise "Cache::write returned false" unless status
-#    end
-
-#    # TODO desc
-#    def lut_read_cache_keys(lut_name)
-#      #TODO
-#    end
-
-#    # TODO desc
-#    def lut_read_cache_key_block(lut_name, key_item)
-#      Rails.cache.read("#{lut_name}/k/#{key_item}")
-#    end
-
-
-
     # Delegating <attribute>_lut(args) method calls
     def method_missing(m, *args, &block)
       method_name = m.to_s
@@ -167,13 +128,8 @@ module LookUpTable
         raise "MethodNotFound: #{m}"
       end
     end
-  end
 
-#  Instance methods
-#  module InstanceMethods
-#    def foobar
-#    end
-#  end
+  end
 end
 
 ActiveRecord::Base.send :include, LookUpTable
