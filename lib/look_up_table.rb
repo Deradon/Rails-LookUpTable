@@ -86,7 +86,7 @@ module LookUpTable
     # Write a single Item into LookUpTable-Cache
     def lut_write_cache_item(lut_name, lut_item, lut_data)
       status = Rails.cache.write("#{lut_name}/#{lut_item}", lut_data)
-      Raise "Cache::write returned false" unless status
+      raise "Cache::write returned false" unless status
     end
 
     # Reads a single LookUpTable from Cache
