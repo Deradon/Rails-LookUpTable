@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    look_up_table (0.1.0.rc2)
+    look_up_table (0.1.0.rc3)
       rails (~> 3.1.1)
 
 GEM
