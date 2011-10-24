@@ -36,12 +36,23 @@ module LookUpTable
     # Reset complete lut if name is omitted, resets given lut otherwise.
     # HACK
     def lut_reset(name=nil)
+      @@lut ||= {}
+
       if name
         @@lut[name.to_sym] = nil
         lut_write_cache_item(name, 0, nil) unless lut_options[:skip_memcached]
       else
         @@lut.keys.each { |k| lut_reset(k) }
         @@lut = {}
+      end
+    end
+
+    def lut_reload(name=nil)
+      if name
+        lut_reset(name)
+        lut(name)
+      else
+        @@lut.keys.each { |k| lut_reload(k) }
       end
     end
 

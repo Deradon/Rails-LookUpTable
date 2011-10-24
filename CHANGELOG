@@ -1,0 +1,3 @@
+0.1.0 - Unreleased
+* Removed: option :write_on_init on look_up_table()
+
