@@ -1,7 +1,9 @@
 # TODO
-# * add: lut_reset(:name)
 # * move Methods to different modules
 # * add private/protected
+# * add class_names to CacheKey per default
+# * if key allready used, transform values to array
+# * somehow handle "cache-overflow"
 module LookUpTable
   extend ActiveSupport::Concern
 
@@ -42,11 +44,13 @@ module LookUpTable
         @@lut[name.to_sym] = nil
         lut_write_cache_item(name, 0, nil) unless lut_options[:skip_memcached]
       else
-        @@lut.keys.each { |k| lut_reset(k) }
+        lut_keys.each { |k| lut_reset(k) }
         @@lut = {}
       end
     end
 
+    # Reloads allready loaded LUTs.
+    # Will also rewrites cache.
     def lut_reload(name=nil)
       if name
         lut_reset(name)
@@ -56,11 +60,13 @@ module LookUpTable
       end
     end
 
+    # Init complete LUT with all keys define.
+    # But won't rewrite cache if allready written!
     def lut_init(name=nil)
       if name
         lut(name)
       else
-        lut_options.keys.each do |key|
+        lut_keys.each do |key|
           lut_init(key)
         end
       end
@@ -71,6 +77,9 @@ module LookUpTable
 
 
     #private
+      def lut_keys
+        lut_options.keys
+      end
 
       # lut_set_proc(lut_name, block) / lut_proc(lut_name)
       def lut_set_proc(name, block)

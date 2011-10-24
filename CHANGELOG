@@ -5,6 +5,7 @@
   No more trouble with :write_on_init.
 
 Also added some new methods:
-* Class.lut_reset(name=nil)
+* Class.lut_init(name=nil)
 * Class.lut_reload(name=nil)
+* Class.lut_reset(name=nil)
 
