@@ -56,7 +56,7 @@ module LookUpTable
         lut_reset(name)
         lut(name)
       else
-        @@lut.keys.each { |k| lut_reload(k) }
+        lut_keys.each { |k| lut_reload(k) }
       end
     end
 
