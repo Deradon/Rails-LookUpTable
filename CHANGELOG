@@ -1,3 +1,10 @@
 0.1.0 - Unreleased
-* Removed: option :write_on_init on look_up_table()
+* Removed: option :write_on_init  on look_up_table()
+* Added:   option :skip_memcached on look_up_table()
+* LookUpTables are loaded and written on the fly (on access).
+  No more trouble with :write_on_init.
+
+Also added some new methods:
+* Class.lut_reset(name=nil)
+* Class.lut_reload(name=nil)
 

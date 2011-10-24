@@ -56,6 +56,18 @@ module LookUpTable
       end
     end
 
+    def lut_init(name=nil)
+      if name
+        lut(name)
+      else
+        lut_options.keys.each do |key|
+          lut_init(key)
+        end
+      end
+
+      return lut_options.keys
+    end
+
 
 
     #private
