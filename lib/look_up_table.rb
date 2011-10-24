@@ -204,7 +204,7 @@ module LookUpTable
         keys = lut.keys
 
         while
-          key_block = keys.slice!(0,batch_size)
+          key_block = keys.slice!(0, lut_options(name)[:batch_size])
           break if key_block.empty?
 
           lut_block = {}
