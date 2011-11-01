@@ -1,9 +1,13 @@
-# TODO
+# TODO:
 # * move Methods to different modules
 # * add private/protected
 # * add class_names to CacheKey per default
 # * if key allready used, transform values to array
 # * somehow handle "cache-overflow"
+# * use symbols freely
+
+# FIXME:
+# * Avoid @@class_variables, issues if "subclassed"
 module LookUpTable
   extend ActiveSupport::Concern
 
@@ -16,7 +20,8 @@ module LookUpTable
         :batch_size     => 10000,
         :read_on_init   => false,
         :skip_memcached => false,
-        :sql_mode       => true
+        :sql_mode       => true.
+        :where          => nil
       }.merge(options)
 
       self.lut_proc[lut_name.to_sym]    = block
@@ -51,27 +56,27 @@ module LookUpTable
 
     # Reloads allready loaded LUTs.
     # Will also rewrites cache.
-    def lut_reload(name=nil)
+    def lut_reload(name = nil)
       if name
         lut_reset(name)
         lut(name)
       else
         lut_keys.each { |k| lut_reload(k) }
       end
+
+      return lut_keys
     end
 
     # Init complete LUT with all keys define.
     # But won't rewrite cache if allready written!
-    def lut_init(name=nil)
+    def lut_init(name = nil)
       if name
         lut(name)
       else
-        lut_keys.each do |key|
-          lut_init(key)
-        end
+        lut_keys.each { |k| lut_init(k) }
       end
 
-      return lut_options.keys
+      return lut_keys
     end
 
 
@@ -134,7 +139,7 @@ module LookUpTable
         lut   = {}
         block = lut_proc(name)
 
-        self.find_in_batches(:batch_size => lut_options(name)[:batch_size]) do |items|
+        self.where(lut_options(name)[:where]).find_in_batches(:batch_size => lut_options(name)[:batch_size]) do |items| #FIXME not DRY here
           items.each do |item|
             if block
               block.call(lut, item)
@@ -178,6 +183,7 @@ module LookUpTable
         lut = {}
 
         while item = lut_read_cache_item(name, i)
+          # HACK: merge will override existing values
           lut.merge!(item) if item
           i += 1
         end
@@ -206,7 +212,7 @@ module LookUpTable
       def lut_write_to_cache_sql_mode(name)
         batch_count = 0
 
-        self.find_in_batches(:batch_size => lut_options(name)[:batch_size]) do |items|
+        self.where(lut_options(name)[:where]).find_in_batches(:batch_size => lut_options(name)[:batch_size]) do |items| #FIXME not DRY here
           lut   = {}
           block = lut_proc(name)
 
