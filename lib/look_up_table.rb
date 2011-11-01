@@ -18,6 +18,7 @@ module LookUpTable
     def look_up_table(lut_name, options={}, &block)
       options = {
         :batch_size     => 10000,
+        :prefix         => "",
         :read_on_init   => false,
         :skip_memcached => false,
         :sql_mode       => true,
@@ -193,7 +194,8 @@ module LookUpTable
 
       # Reads a single item of a LookUpTable from Cache
       def lut_read_cache_item(name, item)
-        Rails.cache.read("#{name}/#{item}")
+        prefix = lut_options(name)[:prefix]
+        Rails.cache.read("#{prefix}#{name}/#{item}")
       end
 
       # Write a LookUpTable into Cache
@@ -257,7 +259,8 @@ module LookUpTable
 
       # Write a single Item into LookUpTable-Cache
       def lut_write_cache_item(name, lut_item, lut_data)
-        status = Rails.cache.write("#{name}/#{lut_item}", lut_data)
+        prefix = lut_options(name)[:prefix]
+        status = Rails.cache.write("#{prefix}#{name}/#{lut_item}", lut_data)
         raise "Cache::write failed - Try lower :batch_size" unless status
       end
 
