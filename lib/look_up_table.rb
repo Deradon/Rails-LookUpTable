@@ -20,7 +20,7 @@ module LookUpTable
         :batch_size     => 10000,
         :read_on_init   => false,
         :skip_memcached => false,
-        :sql_mode       => true.
+        :sql_mode       => true,
         :where          => nil
       }.merge(options)
 
