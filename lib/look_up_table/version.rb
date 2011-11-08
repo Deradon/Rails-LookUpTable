@@ -1,4 +1,4 @@
 module LookUpTable
-  VERSION = "0.1.0.rc8"
+  VERSION = "0.1.0.rc9"
 end
 
