@@ -1,5 +1,5 @@
 = LookUpTable
-*STILL IN DEVELOPMENT!*::
+STILL IN DEVELOPMENT!
 
 == Requirements:
 * Rails 3.x
