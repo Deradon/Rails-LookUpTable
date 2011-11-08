@@ -18,8 +18,8 @@ module LookUpTable
         :where          => nil
       }.merge(options)
 
-      self.lut_proc[lut_key.to_sym]    = block
-      self.lut_options[lut_key.to_sym] = options
+      self.lut_set_proc(lut_key, block)
+      self.lut_set_options(lut_key, options)
 
       self.lut(lut_key) if options[:read_on_init]
     end
@@ -29,24 +29,25 @@ module LookUpTable
     #    * Tag.lut                          (Returns all LookUpTables)
     #    * Tag.lut :name                    (Returns LookUpTable given by :name)
     #    * Tag.lut(:name, "Berlin")         (Returns Value of LookUpTable named :name with :key "Berlin")
-    #    * TODO: Tag.lut :name => "Berlin"  (same as above)
+    #    * Tag.lut({:name => "Berlin", :title => "Berlin"})     TODO: returns hash
+    # TODO: TestCases
     def lut(lut_key = nil, lut_item_key = nil)
       @lut ||= {}
 
       if lut_key.nil?
         hash = {}
         self.lut_keys.each { |key| hash[key] = self.lut(key) } # CHECK: use .inject?
-
         return hash
       end
 
-      @lut[lut_key.to_sym] ||= lut_read(lut_key) || {}
-
-      if lut_item_key.nil?
-        return @lut[lut_key.to_sym]
-      else
-        @lut[lut_key.to_sym][lut_item_key]
+      if (lut_key.respond_to?(:keys))
+        hash = {}
+        lut_key.each { |k,v| hash[k.intern] = self.lut(k,v) }
+        return hash
       end
+
+      lut = @lut[lut_key.to_sym] ||= lut_read(lut_key) || {}
+      lut_item_key ? lut[lut_item_key] : lut
     end
 
     # Reset complete lut if name is omitted, resets given lut otherwise.
@@ -123,20 +124,20 @@ module LookUpTable
     end
 
     protected
-      def lut_proc(name = nil)
+      def lut_proc(lut_key = nil)
         @lut_proc ||= {}
 
-        (name) ? @lut_proc[name.to_sym] : @lut_proc
+        (lut_key) ? @lut_proc[lut_key.to_sym] : @lut_proc
       end
 
       # lut_set_proc(lut_name, block) / lut_proc(lut_name)
-      def lut_set_proc(name, block)
-        lut_proc[name.to_sym] = block
+      def lut_set_proc(lut_key, block)
+        lut_proc[lut_key.to_sym] = block
       end
 
       # lut_set_options(lut_name, options) / lut_options(lut_name)
-      def lut_set_options(name, options)
-        lut_options[name.to_sym] = options
+      def lut_set_options(lut_key, options)
+        lut_options[lut_key.to_sym] = options
       end
 
       # Reads a single lut
