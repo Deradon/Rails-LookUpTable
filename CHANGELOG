@@ -1,4 +1,8 @@
-0.1.0 - Unreleased
+0.1.0 - 2011-11-08
+* Lot of refactoring done and redesigning done.
+* See Readme and rdocs for more information.
+
+0.1.0.rcs - Unreleased
 * Removed: option :write_on_init  on look_up_table()
 * Added:   option :skip_memcached on look_up_table()
 * LookUpTables are loaded and written on the fly (on access).
