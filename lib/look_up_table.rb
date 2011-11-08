@@ -1,14 +1,7 @@
 # TODO:
-# * move Methods to different modules
-# * add private/protected
-# * add class_names to CacheKey per default
-# * if key allready used, transform values to array
-# * somehow handle "cache-overflow"
 # * use symbols freely
-
-# FIXME:
-# * Avoid @class_variables, issues if "subclassed"
-
+# * add some locking on CacheWriting
+# * may find a solution for non-static data
 
 require 'look_up_table'
 
@@ -16,7 +9,7 @@ module LookUpTable
   extend ActiveSupport::Autoload
   extend ActiveSupport::Concern
 
-  require 'look_up_table/base'
+  require 'look_up_table/base' # HACK
   #autoload :Base # CHECK
 end
 
