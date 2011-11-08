@@ -3,15 +3,41 @@ require 'look_up_table/base'
 require 'look_up_table/cache'
 require 'look_up_table/method_missing'
 require 'look_up_table/no_cache'
+require 'look_up_table/support'
 
+# CHECK: fail if Numbers as keys?
+# TODO: Doc :look_up_table => options
 module LookUpTable
   module ClassMethods
-    # Defining a LookUpTable
-    # TODO: Usage
+
+    # == Defining LookUpTables
+    #
+    #   # Sample class:
+    #   Foobar(id: integer, foo: string, bar: integer)
+    #
+    # === Simplest way to define a LookUpTable:
+    #   look_up_table :id
+    #   look_up_table :foo
+    #   look_up_table :bar
+    #
+    # === Add some options to your LookUpTable:
+    #   look_up_table :foo, :batch_size => 5000, :where => "id > 10000"
+    #
+    # === Pass a block to define the LUT manually
+    #   look_up_table :foo do |lut, foobar|
+    #     lut[foobar.foo] = foobar.id
+    #   end
+    #
+    # === Turn off AutoFinder and completly define the whole LUT yourself:
+    #   look_up_table :foo, :sql_mode => false do |lut|
+    #     Foobar.where("id > 10000").each do |foobar|
+    #       lut[foobar.foo] = foobar.id
+    #     end
+    #   end
     def look_up_table(lut_key, options = {}, &block)
       options = {
         :batch_size     => 10000,
-        :prefix         => self.name,
+        :prefix         => "#{self.name}/",
         :read_on_init   => false,
         :use_cache      => true,
         :sql_mode       => true,
@@ -24,13 +50,64 @@ module LookUpTable
       self.lut(lut_key) if options[:read_on_init]
     end
 
-    # Call to a LookUpTable.
+    # == Calling LookUpTables
+    #
+    # === Call without any params
+    # * Returns: All LUTs defined within Foobar
+    #     Foobar.lut
+    #     =>
+    #       {
+    #         :foo    => { :a => 1 },
+    #         :bar    => { :b => 2 },
+    #         :foobar => { :c => 3, :d => 4, :e => 5 }
+    #       }
+    #
+    # === Call with :lut_key:
+    # * Returns: Hash representing LUT defined by :lut_key
+    #     Foobar.lut :foo
+    #     => { :a => 1 }
+    #
+    # === Call with array of :lut_keys
+    # * Returns: Hash representing LUT defined with :lut_key in given Array
+    #     Foobar.lut [:foo, :bar]
+    #     =>
+    #       {
+    #         :foo => { :a => 1 },
+    #         :bar => { :b => 2 }
+    #       }
+    #
+    # === Call with Call with :lut_key and :lut_item_key
+    # * Returns: Value in LUT defined by :lut_key and :lut_item_key
+    #     Foobar.lut :foo, "foobar"
+    #     => 1
+    #     # So we've got a Foobar with :foo => "foobar", its ID is '1'
+    #
+    # === Call with Call with :lut_key and :lut_item_key as Array
+    # * Returns: Hash representing LUT defined by :lut_key with
+    #   :lut_item_keys in Array
+    #     Foobar.lut :foobar, ["foo", "bar", "oof"]
+    #     =>
+    #       {
+    #         "foo" => 3,
+    #         "bar" => 4,
+    #         "oof" => nil
+    #       }
+    #     # So we got Foobars with ID '3' and '4'
+    #     # and no Foobar defined by :foobar => :oof
+    #
+    # === Call with :lut_key as a Hash
+    # * Returns: Hash representing LUTs given by keys of passed Hash.
+    #   - If given value of Hash-Item is nil, will get whole LUT.
+    #   - If given value is String or Symbol, will get value of LUT.
+    #   - If given value is Array, will get values of entries.
     # * Example:
-    #    * Tag.lut                          (Returns all LookUpTables)
-    #    * Tag.lut :name                    (Returns LookUpTable given by :name)
-    #    * Tag.lut(:name, "Berlin")         (Returns Value of LookUpTable named :name with :key "Berlin")
-    #    * Tag.lut({:name => "Berlin", :title => "Berlin"})     TODO: returns hash
-    # TODO: TestCases
+    #    Foobar.lut { :foo => :a, :bar => nil, :foobar => [:c, :d] }
+    #    =>
+    #      {
+    #        :foo    => 1,
+    #        :bar    => { :b => 2 },
+    #        :foobar => { :c => 3, :d => 4 }
+    #      }
     def lut(lut_key = nil, lut_item_key = nil)
       @lut ||= {}
 
@@ -40,24 +117,19 @@ module LookUpTable
         return hash
       end
 
-      if (lut_key.respond_to?(:keys))
-        hash = {}
-        lut_key.each { |k,v| hash[k.intern] = self.lut(k,v) }
-        return hash
-      end
+      @lut[lut_key.intern] ||= lut_read(lut_key) || {} if lut_key.respond_to?(:intern)
 
-      lut = @lut[lut_key.to_sym] ||= lut_read(lut_key) || {}
-      lut_item_key ? lut[lut_item_key] : lut
+      self.lut_deep_hash_call(:lut, @lut, lut_key, lut_item_key)
     end
 
     # Reset complete lut if name is omitted, resets given lut otherwise.
     # HACK: not cool do access and define @lut here
-    def lut_reset(name = nil)
+    def lut_reset(lut_key = nil)
       @lut ||= {}
 
-      if name
-        @lut[name.to_sym] = nil
-        lut_write_cache_item(name, 0, nil) unless lut_options[:skip_memcached] # CHECK: options call w/o name?
+      if lut_key
+        @lut[lut_key.intern] = nil
+        lut_write_cache_item(lut_key, 0, nil) unless lut_options[:skip_memcached] # CHECK: options call w/o name?
       else
         lut_keys.each { |k| lut_reset(k) }
         @lut = {}
@@ -65,10 +137,10 @@ module LookUpTable
     end
 
     # Reading LUT and writing cache again
-    def lut_reload(name = nil)
-      if name
-        lut_reset(name)
-        lut(name)
+    def lut_reload(lut_key = nil)
+      if lut_key
+        lut_reset(lut_key)
+        lut(lut_key)
       else
         lut_keys.each { |k| lut_reload(k) }
       end
@@ -78,9 +150,12 @@ module LookUpTable
 
     # Init complete LUT with all keys define.
     # But won't rewrite cache if allready written!
-    def lut_init(name = nil)
-      if name
-        lut(name)
+    # * Returns: Foobar.lut_keys
+    #     Foobar.lut_init
+    #     => [:id, :foo, :bar, :foobar]
+    def lut_init(lut_key = nil)
+      if lut_key
+        lut(lut_key)
       else
         lut_keys.each { |k| lut_init(k) }
       end
@@ -88,39 +163,29 @@ module LookUpTable
       lut_keys
     end
 
-    # Returns keys of LookUpTables defined
+    # Returns: Keys of LookUpTables defined
+    #   Foobar.lut_keys
+    #   => [:id, :foo, :bar, :foobar]
     def lut_keys
       lut_options.keys
     end
 
-    # Usage
-    # * Klass.lut_options
-    # * Klass.lut_options(:lut_key)
-    # * Klass.lut_options(:lut_key, :option_key)
-    # * Klass.lut_options(:lut_key => :option_key)
-    # * Klass.lut_options(:lut_key => [:option_key, :second_option_key])
-    # TODO: test_cases
-    # CHECK: some sweeter implementation?
-    def lut_options(name = nil)#, option_key = nil)
+    # Returns: Options defined
+    # * Accept same params as: Foobar.lut
+    #     Foobar.lut_options :foobar
+    #     =>
+    #       {
+    #         :batch_size=>10000,
+    #         :prefix=>"Foobar/",
+    #         :read_on_init=>false,
+    #         :use_cache=>true,
+    #         :sql_mode=>true,
+    #         :where=>nil
+    #       }
+    def lut_options(lut_key = nil, option_key = nil)
       @lut_options ||= {}
 
-#      if name && name.respond_to?(:keys)
-#        if name[:lut_key] && name[:lut_key].respond_to?(:values)
-#          return name[:lut_key].each.inject([]) do |arr, el|
-#            arr << @lut_options[name.intern][el.intern]
-#          end
-#        elsif name[:lut_key]
-#          return @lut_options[name.intern][option_key.intern]
-#        else
-#          return @lut_options[name.intern]
-#        end
-#      elsif name
-#        (option_key) ? @lut_options[name.intern][option_key.intern] : @lut_options[name.intern]
-#      else
-#        return @lut_options
-#      end
-
-      (name) ? @lut_options[name.to_sym] : @lut_options
+      self.lut_deep_hash_call(:lut_options, @lut_options, lut_key, option_key)
     end
 
     protected

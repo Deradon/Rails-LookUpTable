@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>Module: LookUpTable::ClassMethods</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="module">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/look_up_table/support.rb
+    <li>lib/look_up_table/base.rb
+    <li>lib/look_up_table/no_cache.rb
+    <li>lib/look_up_table/cache.rb
+    <li>lib/look_up_table/method_missing.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-look_up_table">#look_up_table</a>
+    
+    <li><a href="#method-i-lut">#lut</a>
+    
+    <li><a href="#method-i-lut_cache_exists-3F">#lut_cache_exists?</a>
+    
+    <li><a href="#method-i-lut_deep_hash_call">#lut_deep_hash_call</a>
+    
+    <li><a href="#method-i-lut_init">#lut_init</a>
+    
+    <li><a href="#method-i-lut_keys">#lut_keys</a>
+    
+    <li><a href="#method-i-lut_options">#lut_options</a>
+    
+    <li><a href="#method-i-lut_proc">#lut_proc</a>
+    
+    <li><a href="#method-i-lut_read">#lut_read</a>
+    
+    <li><a href="#method-i-lut_read_cache_item">#lut_read_cache_item</a>
+    
+    <li><a href="#method-i-lut_read_from_cache">#lut_read_from_cache</a>
+    
+    <li><a href="#method-i-lut_read_without_cache">#lut_read_without_cache</a>
+    
+    <li><a href="#method-i-lut_read_without_cache_no_sql_mode">#lut_read_without_cache_no_sql_mode</a>
+    
+    <li><a href="#method-i-lut_read_without_cache_sql_mode">#lut_read_without_cache_sql_mode</a>
+    
+    <li><a href="#method-i-lut_reload">#lut_reload</a>
+    
+    <li><a href="#method-i-lut_reset">#lut_reset</a>
+    
+    <li><a href="#method-i-lut_set_options">#lut_set_options</a>
+    
+    <li><a href="#method-i-lut_set_proc">#lut_set_proc</a>
+    
+    <li><a href="#method-i-lut_write_cache_item">#lut_write_cache_item</a>
+    
+    <li><a href="#method-i-lut_write_to_cache">#lut_write_to_cache</a>
+    
+    <li><a href="#method-i-lut_write_to_cache_no_sql_mode">#lut_write_to_cache_no_sql_mode</a>
+    
+    <li><a href="#method-i-lut_write_to_cache_sql_mode">#lut_write_to_cache_sql_mode</a>
+    
+    <li><a href="#method-i-method_missing">#method_missing</a>
+    
+    <li><a href="#method-i-respond_to-3F">#respond_to?</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../README_rdoc.html">README</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../LookUpTable.html">LookUpTable</a>
+  
+    <li><a href="../LookUpTable/ClassMethods.html">LookUpTable::ClassMethods</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="module">module LookUpTable::ClassMethods</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-look_up_table" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">look_up_table</span><span
+            class="method-args">(lut_key, options = {}, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <h2 id="method-i-look_up_table-label-Defining+LookUpTables">Defining LookUpTables</h2>
+
+<pre class="ruby"><span class="ruby-comment"># Sample class:</span>
+<span class="ruby-constant">Foobar</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">integer</span>, <span class="ruby-identifier">foo</span><span class="ruby-operator">:</span> <span class="ruby-identifier">string</span>, <span class="ruby-identifier">bar</span><span class="ruby-operator">:</span> <span class="ruby-identifier">integer</span>)
+</pre>
+
+<h3 id="method-i-look_up_table-label-Simplest+way+to+define+a+LookUpTable%3A">Simplest way to define a LookUpTable:</h3>
+
+<pre>look_up_table :id
+look_up_table :foo
+look_up_table :bar</pre>
+
+<h3 id="method-i-look_up_table-label-Add+some+options+to+your+LookUpTable%3A">Add some options to your LookUpTable:</h3>
+
+<pre class="ruby"><span class="ruby-identifier">look_up_table</span> :<span class="ruby-identifier">foo</span>, :<span class="ruby-identifier">batch_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5000</span>, :<span class="ruby-identifier">where</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;id &gt; 10000&quot;</span>
+</pre>
+
+<h3 id="method-i-look_up_table-label-Pass+a+block+to+define+the+LUT+manually">Pass a block to define the LUT manually</h3>
+
+<pre class="ruby"><span class="ruby-identifier">look_up_table</span> :<span class="ruby-identifier">foo</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lut</span>, <span class="ruby-identifier">foobar</span><span class="ruby-operator">|</span>
+  <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">foobar</span>.<span class="ruby-identifier">foo</span>] = <span class="ruby-identifier">foobar</span>.<span class="ruby-identifier">id</span>
+<span class="ruby-keyword">end</span>
+</pre>
+
+<h3 id="method-i-look_up_table-label-Turn+off+AutoFinder+and+completly+define+the+whole+LUT+yourself%3A">Turn off AutoFinder and completly define the whole LUT yourself:</h3>
+
+<pre class="ruby"><span class="ruby-identifier">look_up_table</span> :<span class="ruby-identifier">foo</span>, :<span class="ruby-identifier">sql_mode</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">lut</span><span class="ruby-operator">|</span>
+  <span class="ruby-constant">Foobar</span>.<span class="ruby-identifier">where</span>(<span class="ruby-string">&quot;id &gt; 10000&quot;</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">foobar</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">foobar</span>.<span class="ruby-identifier">foo</span>] = <span class="ruby-identifier">foobar</span>.<span class="ruby-identifier">id</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span>
+</pre>
+          
+
+          
+          <div class="method-source-code" id="look_up_table-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/base.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">look_up_table</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">options</span> = {}, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">options</span> = {
+    <span class="ruby-value">:batch_size</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-value">10000</span>,
+    <span class="ruby-value">:prefix</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-node">&quot;#{self.name}/&quot;</span>,
+    <span class="ruby-value">:read_on_init</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>,
+    <span class="ruby-value">:use_cache</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
+    <span class="ruby-value">:sql_mode</span>       =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>,
+    <span class="ruby-value">:where</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>
+  }.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_set_proc</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_set_options</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">options</span>)
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut</span>(<span class="ruby-identifier">lut_key</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:read_on_init</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- look_up_table-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- look_up_table-method -->
+
+    
+      <div id="method-i-lut" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut</span><span
+            class="method-args">(lut_key = nil, lut_item_key = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <h2 id="method-i-lut-label-Calling+LookUpTables">Calling LookUpTables</h2>
+
+<h3 id="method-i-lut-label-Call+without+any+params">Call without any params</h3>
+<ul><li>
+<p>Returns: All LUTs defined within Foobar</p>
+
+<pre class="ruby"><span class="ruby-constant">Foobar</span>.<span class="ruby-identifier">lut</span>
+=<span class="ruby-operator">&gt;</span>
+  {
+    :<span class="ruby-identifier">foo</span>    =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> },
+    :<span class="ruby-identifier">bar</span>    =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">b</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span> },
+    :<span class="ruby-identifier">foobar</span> =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">c</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>, :<span class="ruby-identifier">d</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">4</span>, :<span class="ruby-identifier">e</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">5</span> }
+  }
+</pre>
+</li></ul>
+
+<h3 id="method-i-lut-label-Call+with+%3Alut_key%3A">Call with :lut_key:</h3>
+<ul><li>
+<p>Returns: Hash representing LUT defined by :lut_key</p>
+
+<pre class="ruby"><span class="ruby-constant">Foobar</span>.<span class="ruby-identifier">lut</span> :<span class="ruby-identifier">foo</span>
+=<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> }
+</pre>
+</li></ul>
+
+<h3 id="method-i-lut-label-Call+with+array+of+%3Alut_keys">Call with array of :<a href="ClassMethods.html#method-i-lut_keys">#lut_keys</a></h3>
+<ul><li>
+<p>Returns: Hash representing LUT defined with :lut_key in given Array</p>
+
+<pre class="ruby"><span class="ruby-constant">Foobar</span>.<span class="ruby-identifier">lut</span> [:<span class="ruby-identifier">foo</span>, :<span class="ruby-identifier">bar</span>]
+=<span class="ruby-operator">&gt;</span>
+  {
+    :<span class="ruby-identifier">foo</span> =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> },
+    :<span class="ruby-identifier">bar</span> =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">b</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span> }
+  }
+</pre>
+</li></ul>
+
+<h3 id="method-i-lut-label-Call+with+Call+with+%3Alut_key+and+%3Alut_item_key">Call with Call with :lut_key and :lut_item_key</h3>
+<ul><li>
+<p>Returns: Value in LUT defined by :lut_key and :lut_item_key</p>
+
+<pre class="ruby"><span class="ruby-constant">Foobar</span>.<span class="ruby-identifier">lut</span> :<span class="ruby-identifier">foo</span>, <span class="ruby-string">&quot;foobar&quot;</span>
+=<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+<span class="ruby-comment"># So we've got a Foobar with :foo =&gt; &quot;foobar&quot;, its ID is '1'</span>
+</pre>
+</li></ul>
+
+<h3 id="method-i-lut-label-Call+with+Call+with+%3Alut_key+and+%3Alut_item_key+as+Array">Call with Call with :lut_key and :lut_item_key as Array</h3>
+<ul><li>
+<p>Returns: Hash representing LUT defined by :lut_key with :lut_item_keys in
+Array</p>
+
+<pre class="ruby"><span class="ruby-constant">Foobar</span>.<span class="ruby-identifier">lut</span> :<span class="ruby-identifier">foobar</span>, [<span class="ruby-string">&quot;foo&quot;</span>, <span class="ruby-string">&quot;bar&quot;</span>, <span class="ruby-string">&quot;oof&quot;</span>]
+=<span class="ruby-operator">&gt;</span>
+  {
+    <span class="ruby-string">&quot;foo&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>,
+    <span class="ruby-string">&quot;bar&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">4</span>,
+    <span class="ruby-string">&quot;oof&quot;</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>
+  }
+<span class="ruby-comment"># So we got Foobars with ID '3' and '4'</span>
+<span class="ruby-comment"># and no Foobar defined by :foobar =&gt; :oof</span>
+</pre>
+</li></ul>
+
+<h3 id="method-i-lut-label-Call+with+%3Alut_key+as+a+Hash">Call with :lut_key as a Hash</h3>
+<ul><li>
+<p>Returns: Hash representing LUTs given by keys of passed Hash.</p>
+<ul><li>
+<p>If given value of Hash-Item is nil, will get whole LUT.</p>
+</li><li>
+<p>If given value is String or Symbol, will get value of LUT.</p>
+</li><li>
+<p>If given value is Array, will get values of entries.</p>
+</li></ul>
+</li><li>
+<p>Example:</p>
+
+<pre class="ruby"><span class="ruby-constant">Foobar</span>.<span class="ruby-identifier">lut</span> { :<span class="ruby-identifier">foo</span> =<span class="ruby-operator">&gt;</span> :<span class="ruby-identifier">a</span>, :<span class="ruby-identifier">bar</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">nil</span>, :<span class="ruby-identifier">foobar</span> =<span class="ruby-operator">&gt;</span> [:<span class="ruby-identifier">c</span>, :<span class="ruby-identifier">d</span>] }
+=<span class="ruby-operator">&gt;</span>
+  {
+    :<span class="ruby-identifier">foo</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>,
+    :<span class="ruby-identifier">bar</span>    =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">b</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">2</span> },
+    :<span class="ruby-identifier">foobar</span> =<span class="ruby-operator">&gt;</span> { :<span class="ruby-identifier">c</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">3</span>, :<span class="ruby-identifier">d</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">4</span> }
+  }
+</pre>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="lut-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/base.rb, line 111</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut</span>(<span class="ruby-identifier">lut_key</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">lut_item_key</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@lut</span> <span class="ruby-operator">||=</span> {}
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">lut_key</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">hash</span> = {}
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_keys</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut</span>(<span class="ruby-identifier">key</span>) } <span class="ruby-comment"># CHECK: use .inject?</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">hash</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-ivar">@lut</span>[<span class="ruby-identifier">lut_key</span>.<span class="ruby-identifier">intern</span>] <span class="ruby-operator">||=</span> <span class="ruby-identifier">lut_read</span>(<span class="ruby-identifier">lut_key</span>) <span class="ruby-operator">||</span> {} <span class="ruby-keyword">if</span> <span class="ruby-identifier">lut_key</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:intern</span>)
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_deep_hash_call</span>(<span class="ruby-value">:lut</span>, <span class="ruby-ivar">@lut</span>, <span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">lut_item_key</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut-method -->
+
+    
+      <div id="method-i-lut_init" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_init</span><span
+            class="method-args">(lut_key = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Init complete LUT with all keys define. But won’t rewrite cache if allready
+written!</p>
+<ul><li>
+<p>Returns: Foobar.lut_keys</p>
+
+<pre class="ruby"><span class="ruby-constant">Foobar</span>.<span class="ruby-identifier">lut_init</span>
+=<span class="ruby-operator">&gt;</span> [:<span class="ruby-identifier">id</span>, :<span class="ruby-identifier">foo</span>, :<span class="ruby-identifier">bar</span>, :<span class="ruby-identifier">foobar</span>]
+</pre>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="lut_init-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/base.rb, line 156</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_init</span>(<span class="ruby-identifier">lut_key</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">lut_key</span>
+    <span class="ruby-identifier">lut</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">lut_keys</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">lut_init</span>(<span class="ruby-identifier">k</span>) }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">lut_keys</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_init-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_init-method -->
+
+    
+      <div id="method-i-lut_keys" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_keys</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns: Keys of LookUpTables defined</p>
+
+<pre class="ruby"><span class="ruby-constant">Foobar</span>.<span class="ruby-identifier">lut_keys</span>
+=<span class="ruby-operator">&gt;</span> [:<span class="ruby-identifier">id</span>, :<span class="ruby-identifier">foo</span>, :<span class="ruby-identifier">bar</span>, :<span class="ruby-identifier">foobar</span>]
+</pre>
+          
+
+          
+          <div class="method-source-code" id="lut_keys-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/base.rb, line 169</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_keys</span>
+  <span class="ruby-identifier">lut_options</span>.<span class="ruby-identifier">keys</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_keys-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_keys-method -->
+
+    
+      <div id="method-i-lut_options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_options</span><span
+            class="method-args">(lut_key = nil, option_key = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns: Options defined</p>
+<ul><li>
+<p>Accept same params as: Foobar.lut</p>
+
+<pre class="ruby"><span class="ruby-constant">Foobar</span>.<span class="ruby-identifier">lut_options</span> :<span class="ruby-identifier">foobar</span>
+=<span class="ruby-operator">&gt;</span>
+  {
+    :<span class="ruby-identifier">batch_size=</span><span class="ruby-operator">&gt;</span><span class="ruby-value">10000</span>,
+    :<span class="ruby-identifier">prefix=</span><span class="ruby-operator">&gt;</span><span class="ruby-string">&quot;Foobar/&quot;</span>,
+    :<span class="ruby-identifier">read_on_init=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">false</span>,
+    :<span class="ruby-identifier">use_cache=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>,
+    :<span class="ruby-identifier">sql_mode=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">true</span>,
+    :<span class="ruby-identifier">where=</span><span class="ruby-operator">&gt;</span><span class="ruby-keyword">nil</span>
+  }
+</pre>
+</li></ul>
+          
+
+          
+          <div class="method-source-code" id="lut_options-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/base.rb, line 185</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_options</span>(<span class="ruby-identifier">lut_key</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">option_key</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@lut_options</span> <span class="ruby-operator">||=</span> {}
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_deep_hash_call</span>(<span class="ruby-value">:lut_options</span>, <span class="ruby-ivar">@lut_options</span>, <span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">option_key</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_options-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_options-method -->
+
+    
+      <div id="method-i-lut_reload" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_reload</span><span
+            class="method-args">(lut_key = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reading LUT and writing cache again</p>
+          
+
+          
+          <div class="method-source-code" id="lut_reload-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/base.rb, line 140</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_reload</span>(<span class="ruby-identifier">lut_key</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">lut_key</span>
+    <span class="ruby-identifier">lut_reset</span>(<span class="ruby-identifier">lut_key</span>)
+    <span class="ruby-identifier">lut</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">lut_keys</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">lut_reload</span>(<span class="ruby-identifier">k</span>) }
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">lut_keys</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_reload-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_reload-method -->
+
+    
+      <div id="method-i-lut_reset" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_reset</span><span
+            class="method-args">(lut_key = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reset complete lut if name is omitted, resets given lut otherwise. HACK:
+not cool do access and define @lut here</p>
+          
+
+          
+          <div class="method-source-code" id="lut_reset-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/base.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_reset</span>(<span class="ruby-identifier">lut_key</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@lut</span> <span class="ruby-operator">||=</span> {}
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">lut_key</span>
+    <span class="ruby-ivar">@lut</span>[<span class="ruby-identifier">lut_key</span>.<span class="ruby-identifier">intern</span>] = <span class="ruby-keyword">nil</span>
+    <span class="ruby-identifier">lut_write_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-value">0</span>, <span class="ruby-keyword">nil</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">lut_options</span>[<span class="ruby-value">:skip_memcached</span>] <span class="ruby-comment"># CHECK: options call w/o name?</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">lut_keys</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">lut_reset</span>(<span class="ruby-identifier">k</span>) }
+    <span class="ruby-ivar">@lut</span> = {}
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_reset-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_reset-method -->
+
+    
+      <div id="method-i-method_missing" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">method_missing</span><span
+            class="method-args">(sym, *args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Delegating &lt;attribute&gt;_lut(args) method calls e.g.: Klass.foo_lut
+=&gt; Klass.lut :foo</p>
+          
+
+          
+          <div class="method-source-code" id="method_missing-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/method_missing.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">sym</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">method_name</span> = <span class="ruby-identifier">sym</span>.<span class="ruby-identifier">to_s</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">method_name</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">&quot;_lut&quot;</span>)
+    <span class="ruby-identifier">lut_name</span> = <span class="ruby-identifier">method_name</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">-5</span>]
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut</span>(<span class="ruby-identifier">lut_name</span>, <span class="ruby-identifier">args</span>.<span class="ruby-identifier">first</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">super</span>(<span class="ruby-identifier">sym</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- method_missing-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- method_missing-method -->
+
+    
+      <div id="method-i-respond_to-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">respond_to?</span><span
+            class="method-args">(sym, bool)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>CHECK: what’s bool?</p>
+          
+
+          
+          <div class="method-source-code" id="respond_to-3F-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/method_missing.rb, line 17</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-identifier">bool</span>)
+  <span class="ruby-identifier">sym</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">end_with?</span>(<span class="ruby-string">&quot;_lut&quot;</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword">super</span>(<span class="ruby-identifier">sym</span>, <span class="ruby-identifier">bool</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- respond_to-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- respond_to-3F-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+     <section id="protected-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Protected Instance Methods</h3>
+
+    
+      <div id="method-i-lut_cache_exists-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_cache_exists?</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Cache entry for given LUT exists?</p>
+          
+
+          
+          <div class="method-source-code" id="lut_cache_exists-3F-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/cache.rb, line 6</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_cache_exists?</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-operator">!</span><span class="ruby-identifier">lut_read_cache_item</span>(<span class="ruby-identifier">name</span>, <span class="ruby-value">0</span>).<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_cache_exists-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_cache_exists-3F-method -->
+
+    
+      <div id="method-i-lut_deep_hash_call" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_deep_hash_call</span><span
+            class="method-args">(method, deep_hash, key, item_key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="lut_deep_hash_call-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/support.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_deep_hash_call</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">deep_hash</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">item_key</span>)
+  <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">deep_hash</span> <span class="ruby-operator">||=</span> {}
+
+  <span class="ruby-comment"># Passed a Hash as key</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:keys</span>)
+    <span class="ruby-identifier">h</span> = {}
+    <span class="ruby-identifier">key</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">k</span>.<span class="ruby-identifier">intern</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span>) }
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">h</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Passed a Array or Set as key</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:entries</span>)
+    <span class="ruby-identifier">h</span> = {}
+    <span class="ruby-identifier">key</span>.<span class="ruby-identifier">entries</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">e</span>.<span class="ruby-identifier">intern</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">e</span>) }
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">h</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># Passed a Array or Set as item_key</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">item_key</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:entries</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">key</span>
+    <span class="ruby-identifier">h</span> = {}
+    <span class="ruby-identifier">item_key</span>.<span class="ruby-identifier">entries</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">e</span><span class="ruby-operator">|</span> <span class="ruby-identifier">h</span>[<span class="ruby-identifier">e</span>] = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">key</span>, <span class="ruby-identifier">e</span>) }
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">h</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">intern</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:intern</span>)
+  <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">item_key</span>]   <span class="ruby-keyword">if</span> <span class="ruby-identifier">item_key</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">hash</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_deep_hash_call-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_deep_hash_call-method -->
+
+    
+      <div id="method-i-lut_proc" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_proc</span><span
+            class="method-args">(lut_key = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="lut_proc-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/base.rb, line 192</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_proc</span>(<span class="ruby-identifier">lut_key</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@lut_proc</span> <span class="ruby-operator">||=</span> {}
+
+  (<span class="ruby-identifier">lut_key</span>) <span class="ruby-operator">?</span> <span class="ruby-ivar">@lut_proc</span>[<span class="ruby-identifier">lut_key</span>.<span class="ruby-identifier">to_sym</span>] <span class="ruby-operator">:</span> <span class="ruby-ivar">@lut_proc</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_proc-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_proc-method -->
+
+    
+      <div id="method-i-lut_read" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_read</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reads a single lut</p>
+          
+
+          
+          <div class="method-source-code" id="lut_read-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/base.rb, line 209</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_read</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">options</span> = <span class="ruby-identifier">lut_options</span>(<span class="ruby-identifier">name</span>)<span class="ruby-comment"># HACK</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-value">:use_cache</span>]
+    <span class="ruby-identifier">lut_read_from_cache</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">lut_read_without_cache</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_read-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_read-method -->
+
+    
+      <div id="method-i-lut_read_cache_item" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_read_cache_item</span><span
+            class="method-args">(lut_key, lut_item_key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reads a single item of a <a href="../LookUpTable.html">LookUpTable</a> from
+Cache</p>
+          
+
+          
+          <div class="method-source-code" id="lut_read_cache_item-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/cache.rb, line 108</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_read_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">lut_item_key</span>)
+  <span class="ruby-identifier">prefix</span> = <span class="ruby-identifier">lut_options</span>(<span class="ruby-identifier">lut_key</span>)[<span class="ruby-value">:prefix</span>]
+
+  <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">cache</span>.<span class="ruby-identifier">read</span>(<span class="ruby-node">&quot;#{prefix}#{lut_key}/#{lut_item_key}&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_read_cache_item-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_read_cache_item-method -->
+
+    
+      <div id="method-i-lut_read_from_cache" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_read_from_cache</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reads a complete lut from cache HACK: this still looks ugly somehow</p>
+          
+
+          
+          <div class="method-source-code" id="lut_read_from_cache-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/cache.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_read_from_cache</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-identifier">lut_write_to_cache</span>(<span class="ruby-identifier">name</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">lut_cache_exists?</span>(<span class="ruby-identifier">name</span>)
+
+  <span class="ruby-identifier">i</span>   = <span class="ruby-value">0</span>
+  <span class="ruby-identifier">lut</span> = {}
+
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">item</span> = <span class="ruby-identifier">lut_read_cache_item</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">i</span>)
+    <span class="ruby-comment"># FIXME: merge will override existing values</span>
+    <span class="ruby-comment"># lut.merge!(item) if item</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">item</span>
+      <span class="ruby-identifier">item</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>,<span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>]
+          <span class="ruby-identifier">v</span>      = [<span class="ruby-identifier">v</span>]      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:concat</span>)
+          <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>] = [<span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>]] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>].<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:concat</span>)
+          <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>].<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">v</span>)
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">i</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">lut</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_read_from_cache-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_read_from_cache-method -->
+
+    
+      <div id="method-i-lut_read_without_cache" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_read_without_cache</span><span
+            class="method-args">(lut_key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Reads a complete from given block or generic version HACK: some duplicated
+methods from Class.lut_write_to_cache</p>
+          
+
+          
+          <div class="method-source-code" id="lut_read_without_cache-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/no_cache.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_read_without_cache</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">lut_options</span>(<span class="ruby-identifier">lut_key</span>)[<span class="ruby-value">:sql_mode</span>]
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">lut_read_without_cache_sql_mode</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">lut_read_without_cache_no_sql_mode</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_read_without_cache-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_read_without_cache-method -->
+
+    
+      <div id="method-i-lut_read_without_cache_no_sql_mode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_read_without_cache_no_sql_mode</span><span
+            class="method-args">(lut_key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>CHECK: ugly method_name</p>
+          
+
+          
+          <div class="method-source-code" id="lut_read_without_cache_no_sql_mode-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/no_cache.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_read_without_cache_no_sql_mode</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-identifier">lut</span>   = {}
+
+  <span class="ruby-identifier">block</span> = <span class="ruby-identifier">lut_proc</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">lut</span>)
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">lut</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_read_without_cache_no_sql_mode-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_read_without_cache_no_sql_mode-method -->
+
+    
+      <div id="method-i-lut_read_without_cache_sql_mode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_read_without_cache_sql_mode</span><span
+            class="method-args">(lut_key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>CHECK: somehow long method</p>
+          
+
+          
+          <div class="method-source-code" id="lut_read_without_cache_sql_mode-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/no_cache.rb, line 16</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_read_without_cache_sql_mode</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-identifier">lut</span>   = {}
+  <span class="ruby-identifier">block</span> = <span class="ruby-identifier">lut_proc</span>(<span class="ruby-identifier">lut_key</span>)
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">lut_options</span>(<span class="ruby-identifier">lut_key</span>)[<span class="ruby-value">:where</span>]).<span class="ruby-identifier">find_in_batches</span>(<span class="ruby-value">:batch_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">lut_options</span>(<span class="ruby-identifier">lut_key</span>)[<span class="ruby-value">:batch_size</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">items</span><span class="ruby-operator">|</span> <span class="ruby-comment">#FIXME not DRY here</span>
+    <span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>
+        <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">lut</span>, <span class="ruby-identifier">item</span>)
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">item</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">lut_key</span>)] = <span class="ruby-identifier">item</span>.<span class="ruby-identifier">id</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">lut</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_read_without_cache_sql_mode-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_read_without_cache_sql_mode-method -->
+
+    
+      <div id="method-i-lut_set_options" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_set_options</span><span
+            class="method-args">(lut_key, options)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a
+href="ClassMethods.html#method-i-lut_set_options">#lut_set_options</a>(lut_name,
+options) / <a
+href="ClassMethods.html#method-i-lut_options">#lut_options</a>(lut_name)</p>
+          
+
+          
+          <div class="method-source-code" id="lut_set_options-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/base.rb, line 204</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_set_options</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">options</span>)
+  <span class="ruby-identifier">lut_options</span>[<span class="ruby-identifier">lut_key</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">options</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_set_options-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_set_options-method -->
+
+    
+      <div id="method-i-lut_set_proc" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_set_proc</span><span
+            class="method-args">(lut_key, block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a
+href="ClassMethods.html#method-i-lut_set_proc">#lut_set_proc</a>(lut_name,
+block) / <a
+href="ClassMethods.html#method-i-lut_proc">#lut_proc</a>(lut_name)</p>
+          
+
+          
+          <div class="method-source-code" id="lut_set_proc-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/base.rb, line 199</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_set_proc</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">lut_proc</span>[<span class="ruby-identifier">lut_key</span>.<span class="ruby-identifier">to_sym</span>] = <span class="ruby-identifier">block</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_set_proc-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_set_proc-method -->
+
+    
+      <div id="method-i-lut_write_cache_item" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_write_cache_item</span><span
+            class="method-args">(lut_key, lut_item_count, lut_data)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Write a single Item into LookUpTable-Cache TODO: refactor</p>
+          
+
+          
+          <div class="method-source-code" id="lut_write_cache_item-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/cache.rb, line 116</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_write_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">lut_item_count</span>, <span class="ruby-identifier">lut_data</span>)
+  <span class="ruby-identifier">prefix</span>  = <span class="ruby-identifier">lut_options</span>(<span class="ruby-identifier">lut_key</span>)[<span class="ruby-value">:prefix</span>]
+  <span class="ruby-identifier">success</span> = <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">cache</span>.<span class="ruby-identifier">write</span>(<span class="ruby-node">&quot;#{prefix}#{lut_key}/#{lut_item_count}&quot;</span>, <span class="ruby-identifier">lut_data</span>)
+
+  <span class="ruby-comment"># Do some magic here and just throw a warning</span>
+  <span class="ruby-comment"># * Divide and conquer on error</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">success</span>
+    <span class="ruby-identifier">warn</span> <span class="ruby-string">&quot;WARNING - LookUpTable: Cache.write failed, trying to 'divide and conquer'&quot;</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">lut_data</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:keys</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">lut_data</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:values</span>)
+      <span class="ruby-comment"># Got a hash</span>
+      <span class="ruby-identifier">keys</span>        = <span class="ruby-identifier">lut_data</span>.<span class="ruby-identifier">keys</span>
+      <span class="ruby-identifier">keys_length</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">length</span>
+
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">keys_length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">2</span>
+        <span class="ruby-comment"># Try to slice down values</span>
+        <span class="ruby-identifier">entries</span> = <span class="ruby-identifier">lut_data</span>[<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">first</span>].<span class="ruby-identifier">entries</span>
+
+        <span class="ruby-identifier">first_entries</span>  = { <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">first</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">entries</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">entries</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>) }
+        <span class="ruby-identifier">second_entries</span> = { <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">first</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">entries</span> }
+
+        <span class="ruby-identifier">lut_item_count</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_write_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">lut_item_count</span>, <span class="ruby-identifier">first_entries</span>)
+        <span class="ruby-identifier">lut_item_count</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_write_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">lut_item_count</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">second_entries</span>)
+
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-identifier">first_keys</span>  = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>)
+        <span class="ruby-identifier">second_keys</span> = <span class="ruby-identifier">keys</span>
+        <span class="ruby-identifier">first_hash</span>  = {}
+        <span class="ruby-identifier">second_hash</span> = {}
+
+        <span class="ruby-identifier">first_keys</span>.<span class="ruby-identifier">each</span>  { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">first_hash</span>[<span class="ruby-identifier">k</span>]  = <span class="ruby-identifier">lut_data</span>[<span class="ruby-identifier">k</span>] }
+        <span class="ruby-identifier">second_keys</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-identifier">second_hash</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">lut_data</span>[<span class="ruby-identifier">k</span>] }
+
+        <span class="ruby-identifier">lut_item_count</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_write_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">lut_item_count</span>, <span class="ruby-identifier">first_hash</span>)
+        <span class="ruby-identifier">lut_item_count</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_write_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">lut_item_count</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">second_hash</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">lut_data</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:entries</span>)
+      <span class="ruby-comment"># Got an Array or a Set</span>
+      <span class="ruby-identifier">entries</span> = <span class="ruby-identifier">lut_data</span>.<span class="ruby-identifier">entries</span>
+      <span class="ruby-identifier">first_entries</span>  = <span class="ruby-identifier">entries</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">entries</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">/</span><span class="ruby-value">2</span>)
+      <span class="ruby-identifier">second_entries</span> = <span class="ruby-identifier">entries</span>
+
+      <span class="ruby-identifier">lut_item_count</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_write_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">lut_item_count</span>, <span class="ruby-identifier">first_entries</span>)
+      <span class="ruby-identifier">lut_item_count</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_write_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">lut_item_count</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">second_entries</span>)
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-comment"># Finally we can't help here</span>
+      <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Cache::write failed - Try lower :batch_size&quot;</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">lut_item_count</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_write_cache_item-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_write_cache_item-method -->
+
+    
+      <div id="method-i-lut_write_to_cache" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_write_to_cache</span><span
+            class="method-args">(lut_key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Write a <a href="../LookUpTable.html">LookUpTable</a> into Cache</p>
+          
+
+          
+          <div class="method-source-code" id="lut_write_to_cache-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/cache.rb, line 40</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_write_to_cache</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">lut_options</span>(<span class="ruby-identifier">lut_key</span>)[<span class="ruby-value">:sql_mode</span>]
+    <span class="ruby-identifier">count</span> = <span class="ruby-identifier">lut_write_to_cache_sql_mode</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">count</span> = <span class="ruby-identifier">lut_write_to_cache_no_sql_mode</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment"># HACK: Writing a \0 to terminate batch_items</span>
+  <span class="ruby-identifier">lut_write_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">count</span>, <span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_write_to_cache-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_write_to_cache-method -->
+
+    
+      <div id="method-i-lut_write_to_cache_no_sql_mode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_write_to_cache_no_sql_mode</span><span
+            class="method-args">(lut_key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>HACK: somehow long method</p>
+          
+
+          
+          <div class="method-source-code" id="lut_write_to_cache_no_sql_mode-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/cache.rb, line 84</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_write_to_cache_no_sql_mode</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-identifier">lut</span>         = {}
+  <span class="ruby-identifier">batch_count</span> = <span class="ruby-value">0</span>
+
+  <span class="ruby-identifier">block</span> = <span class="ruby-identifier">lut_proc</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">lut</span>)
+
+  <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">lut</span>.<span class="ruby-identifier">keys</span>
+
+  <span class="ruby-keyword">while</span>
+    <span class="ruby-identifier">key_block</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>, <span class="ruby-identifier">lut_options</span>(<span class="ruby-identifier">lut_key</span>)[<span class="ruby-value">:batch_size</span>])
+    <span class="ruby-keyword">break</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">key_block</span>.<span class="ruby-identifier">empty?</span>
+
+    <span class="ruby-identifier">lut_block</span> = {}
+    <span class="ruby-identifier">key_block</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span> <span class="ruby-identifier">lut_block</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">key</span>]}
+
+    <span class="ruby-identifier">batch_count</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_write_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">batch_count</span>, <span class="ruby-identifier">lut_block</span>)
+    <span class="ruby-identifier">batch_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">batch_count</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_write_to_cache_no_sql_mode-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_write_to_cache_no_sql_mode-method -->
+
+    
+      <div id="method-i-lut_write_to_cache_sql_mode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lut_write_to_cache_sql_mode</span><span
+            class="method-args">(lut_key)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>HACK: somehow long method</p>
+          
+
+          
+          <div class="method-source-code" id="lut_write_to_cache_sql_mode-source">
+            <pre><span class="ruby-comment"># File lib/look_up_table/cache.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lut_write_to_cache_sql_mode</span>(<span class="ruby-identifier">lut_key</span>)
+  <span class="ruby-identifier">batch_count</span> = <span class="ruby-value">0</span>
+
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">lut_options</span>(<span class="ruby-identifier">lut_key</span>)[<span class="ruby-value">:where</span>]).<span class="ruby-identifier">find_in_batches</span>(<span class="ruby-value">:batch_size</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">lut_options</span>(<span class="ruby-identifier">lut_key</span>)[<span class="ruby-value">:batch_size</span>]) <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">items</span><span class="ruby-operator">|</span> <span class="ruby-comment">#FIXME not DRY here</span>
+    <span class="ruby-identifier">lut</span>   = {}
+    <span class="ruby-identifier">block</span> = <span class="ruby-identifier">lut_proc</span>(<span class="ruby-identifier">lut_key</span>)
+
+    <span class="ruby-identifier">items</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">item</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">block</span>
+        <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">lut</span>, <span class="ruby-identifier">item</span>)
+      <span class="ruby-keyword">else</span>
+        <span class="ruby-comment"># HACK: doing a merge w/o replacing, just add elements for childs and may transform elements to array</span>
+        <span class="ruby-identifier">k</span> = <span class="ruby-identifier">item</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">lut_key</span>)
+        <span class="ruby-identifier">v</span> = <span class="ruby-identifier">item</span>.<span class="ruby-identifier">id</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>]
+          <span class="ruby-identifier">v</span>      = [<span class="ruby-identifier">v</span>]      <span class="ruby-keyword">unless</span> <span class="ruby-identifier">v</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:concat</span>)
+          <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>] = [<span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>]] <span class="ruby-keyword">unless</span> <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>].<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:concat</span>)
+          <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>].<span class="ruby-identifier">concat</span>(<span class="ruby-identifier">v</span>)
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-identifier">lut</span>[<span class="ruby-identifier">k</span>] = <span class="ruby-identifier">v</span>
+        <span class="ruby-keyword">end</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">batch_count</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">lut_write_cache_item</span>(<span class="ruby-identifier">lut_key</span>, <span class="ruby-identifier">batch_count</span>, <span class="ruby-identifier">lut</span>)
+    <span class="ruby-identifier">batch_count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">batch_count</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lut_write_to_cache_sql_mode-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lut_write_to_cache_sql_mode-method -->
+
+    
+    </section><!-- protected-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.11.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

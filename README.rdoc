@@ -1,3 +1,31 @@
 = LookUpTable
+*STILL IN DEVELOPMENT!*::
 
-This project rocks and uses MIT-LICENSE.
+== Requirements:
+* Rails 3.x
+* Ruby 1.8.7, 1.9.2, 1.9.3
+
+== Install
+Put following to your gemfile:
+  gem 'look_up_table'
+
+== Usage
+  class Foobar < ActiveRecord::Base
+    # Allows: Foobar.lut :id
+    look_up_table :id
+
+    # Allows: Foobar.lut :foo
+    look_up_table :foo
+
+    # Allows: Foobar.lut :bar
+    look_up_table :bar
+
+    # Allows: Foobar.lut :foobar
+    look_up_table :foobar
+  end
+
+
+== TODOs
+* Rename gem to 'rails-look_up_table'
+* More DOCs
+
