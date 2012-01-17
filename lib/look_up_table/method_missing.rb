@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 module LookUpTable
   module ClassMethods
     # Delegating <attribute>_lut(args) method calls

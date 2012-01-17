@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class CreateFoobars < ActiveRecord::Migration
   def change
     create_table :foobars do |t|

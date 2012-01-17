@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 class Foobar < ActiveRecord::Base
 
   look_up_table :id

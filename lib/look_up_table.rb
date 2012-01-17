@@ -1,7 +1,9 @@
+# -*- encoding : utf-8 -*-
 # TODO:
 # * use symbols freely
 # * add some locking on CacheWriting
 # * may find a solution for non-static data
+# * add method_added listener
 
 require 'look_up_table'
 

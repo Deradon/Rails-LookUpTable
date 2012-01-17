@@ -1,3 +1,4 @@
+# -*- encoding : utf-8 -*-
 require 'look_up_table'
 require 'look_up_table/base'
 require 'look_up_table/cache'
