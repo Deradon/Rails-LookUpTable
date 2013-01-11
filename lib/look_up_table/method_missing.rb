@@ -15,7 +15,7 @@ module LookUpTable
     end
 
     # CHECK: what's bool?
-    def respond_to?(sym, bool)
+    def respond_to?(sym, bool=false)
       sym.to_s.end_with?("_lut") || super(sym, bool)
     end
   end
